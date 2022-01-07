@@ -3,6 +3,9 @@
 ## Wireframes
 https://miro.com/app/board/uXjVOXGZm4I=/?invite_link_id=489495930807
 
+## ERD
+https://lucid.app/lucidchart/f7953477-1cef-49e8-b9c3-18907f6878cb/edit?beaconFlowId=2F0C30E27CD23CAD&invitationId=inv_9ebbdd61-51d0-4961-b49c-417a63a28f83&page=0_0#
+
 ## User Stories
     1. As a user, you will be able to create and login to the Yoga app.
 
