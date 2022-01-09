@@ -1,7 +1,8 @@
 // import React, { Component, Fragment } from 'react'
-import React, { useState, Fragment } from 'react'
+import React, { useState, Fragment, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
+import apiUrl from './apiConfig'
 
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
@@ -17,6 +18,8 @@ import StartRoutine from './components/StartRoutine'
 import PoseDetail from './components/PoseDetail'
 import CreateRoutine from './components/CreateRoutine'
 
+const mongoose = require('mongoose')
+
 const App = () => {
 
   const [user, setUser] = useState(null)
@@ -29,94 +32,112 @@ const App = () => {
     setUser(null)
   }
 
-	const deleteAlert = (id) => {
-		setMsgAlerts((prevState) => {
-			return (prevState.filter((msg) => msg.id !== id) )
-		})
-	}
+  const deleteAlert = (id) => {
+    setMsgAlerts((prevState) => {
+      return (prevState.filter((msg) => msg.id !== id))
+    })
+  }
 
-	const msgAlert = ({ heading, message, variant }) => {
-		const id = uuid()
-		setMsgAlerts(() => {
-			return (
-				[{ heading, message, variant, id }]
+  const msgAlert = ({ heading, message, variant }) => {
+    const id = uuid()
+    setMsgAlerts(() => {
+      return (
+        [{ heading, message, variant, id }]
       )
-		})
-	}
+    })
+  }
+  const getAsanas = () => {
+    if (user != null) {
+      fetch(`mongodb:127.0.0.1:27017/asana-development`, {
+        // Requires user to be signed in
+        headers: {
+          'Authorization': 'Bearer ' + user.token
+        }
+      })
+        .then(asanas => {
+          console.log('showing asanas', asanas)
+          // return asanas.json()
+        })
+        .catch(error => console.log('Failed to fetch', error))
+    }
+  }
+  getAsanas()
 
-		return (
-			<Fragment>
-				<Header user={user} />
-				<Routes>
-					<Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
-					<Route
-						path='/sign-up'
-						element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
-					/>
-					<Route
-						path='/sign-in'
-						element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
-					/>
-          <Route
-            path='/sign-out'
-            element={
-              <RequireAuth user={user}>
-                <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-              </RequireAuth>
-            }
-          />
-		  <Route
-            path='/createroutine'
-            element={
-              <RequireAuth user={user}>
-                <CreateRoutine msgAlert={msgAlert} user={user}/>
-              </RequireAuth>
-            }
-          />
-		  <Route
-            path='/profile'
-            element={
-              <RequireAuth user={user}>
-                <Profile msgAlert={msgAlert} user={user}/>
-              </RequireAuth>
-            }
-          />
-		  <Route
-            path='/startroutine'
-            element={
-              <RequireAuth user={user}>
-                <StartRoutine msgAlert={msgAlert} user={user}/>
-              </RequireAuth>
-            }
-          />
-		  <Route
-            path='/posedetail'
-            element={
-              <RequireAuth user={user}>
-                <PoseDetail msgAlert={msgAlert} user={user}/>
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/change-password'
-            element={
-              <RequireAuth user={user}>
-                <ChangePassword msgAlert={msgAlert} user={user} />
-              </RequireAuth>}
-          />
-				</Routes>
-				{msgAlerts.map((msgAlert) => (
-					<AutoDismissAlert
-						key={msgAlert.id}
-						heading={msgAlert.heading}
-						variant={msgAlert.variant}
-						message={msgAlert.message}
-						id={msgAlert.id}
-						deleteAlert={deleteAlert}
-					/>
-				))}
-			</Fragment>
-		)
+
+
+  return (
+    <Fragment>
+      <Header user={user} />
+      <Routes>
+        <Route path='/' element={<Home msgAlert={msgAlert} user={user} />} />
+        <Route
+          path='/sign-up'
+          element={<SignUp msgAlert={msgAlert} setUser={setUser} />}
+        />
+        <Route
+          path='/sign-in'
+          element={<SignIn msgAlert={msgAlert} setUser={setUser} />}
+        />
+        <Route
+          path='/sign-out'
+          element={
+            <RequireAuth user={user}>
+              <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/createroutine'
+          element={
+            <RequireAuth user={user}>
+              <CreateRoutine msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/profile'
+          element={
+            <RequireAuth user={user}>
+              <Profile msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/startroutine'
+          element={
+            <RequireAuth user={user}>
+              <StartRoutine msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/posedetail'
+          element={
+            <RequireAuth user={user}>
+              <PoseDetail msgAlert={msgAlert} user={user} />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path='/change-password'
+          element={
+            <RequireAuth user={user}>
+              <ChangePassword msgAlert={msgAlert} user={user} />
+            </RequireAuth>}
+        />
+      </Routes>
+      {msgAlerts.map((msgAlert) => (
+        <AutoDismissAlert
+          key={msgAlert.id}
+          heading={msgAlert.heading}
+          variant={msgAlert.variant}
+          message={msgAlert.message}
+          id={msgAlert.id}
+          deleteAlert={deleteAlert}
+        />
+      ))}
+    </Fragment>
+  )
 }
 
 export default App
