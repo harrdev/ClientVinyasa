@@ -48,7 +48,7 @@ const App = () => {
   }
   const getAsanas = () => {
     if (user != null) {
-      fetch(`mongodb:127.0.0.1:27017/asana-development`, {
+      fetch(apiUrl + '/', {
         // Requires user to be signed in
         headers: {
           'Authorization': 'Bearer ' + user.token
