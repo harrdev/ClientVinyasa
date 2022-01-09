@@ -9,6 +9,26 @@ const linkStyle = {
 const authenticatedOptions = (
 	<>
 		<Nav.Link>
+			<Link to='./profile' style={linkStyle}>
+				Profile
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='./posedetail' style={linkStyle}>
+				Pose Detail
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='./startroutine' style={linkStyle}>
+				Start Routine
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
+			<Link to='./createroutine' style={linkStyle}>
+				Create Routine
+			</Link>
+		</Nav.Link>
+		<Nav.Link>
 			<Link to='change-password' style={linkStyle}>
 				Change Password
 			</Link>
@@ -46,7 +66,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand>
             <Link to='/' style={linkStyle}>
-                react-auth-template
+                Vinyasa Builder
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />

@@ -12,6 +12,10 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import Profile from './components/Profile'
+import StartRoutine from './components/StartRoutine'
+import PoseDetail from './components/PoseDetail'
+import CreateRoutine from './components/CreateRoutine'
 
 const App = () => {
 
@@ -58,6 +62,38 @@ const App = () => {
             element={
               <RequireAuth user={user}>
                 <SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
+              </RequireAuth>
+            }
+          />
+		  <Route
+            path='/createroutine'
+            element={
+              <RequireAuth user={user}>
+                <CreateRoutine msgAlert={msgAlert} user={user}/>
+              </RequireAuth>
+            }
+          />
+		  <Route
+            path='/profile'
+            element={
+              <RequireAuth user={user}>
+                <Profile msgAlert={msgAlert} user={user}/>
+              </RequireAuth>
+            }
+          />
+		  <Route
+            path='/startroutine'
+            element={
+              <RequireAuth user={user}>
+                <StartRoutine msgAlert={msgAlert} user={user}/>
+              </RequireAuth>
+            }
+          />
+		  <Route
+            path='/posedetail'
+            element={
+              <RequireAuth user={user}>
+                <PoseDetail msgAlert={msgAlert} user={user}/>
               </RequireAuth>
             }
           />
