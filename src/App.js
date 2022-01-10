@@ -18,8 +18,6 @@ import StartRoutine from './components/StartRoutine'
 import PoseDetail from './components/PoseDetail'
 import CreateRoutine from './components/CreateRoutine'
 
-const mongoose = require('mongoose')
-
 const App = () => {
 
   const [user, setUser] = useState(null)
@@ -54,10 +52,10 @@ const App = () => {
           'Authorization': 'Bearer ' + user.token
         }
       })
-        .then(asanas => {
-          console.log('showing asanas', asanas)
+        .then(res => {
+          console.log('These are the seeded asanas', res)
           // return asanas.json()
-        })
+		})
         .catch(error => console.log('Failed to fetch', error))
     }
   }
