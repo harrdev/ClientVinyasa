@@ -51,6 +51,7 @@ const App = () => {
   const addPoses = () => {
 	  getAsanas()
 	  	.then(res => {
+			  console.log("This is the response", res)
 			  setPose(res.data.asanas)
 		  })
   }
