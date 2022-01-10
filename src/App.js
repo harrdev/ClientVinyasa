@@ -3,6 +3,7 @@ import React, { useState, Fragment, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 import apiUrl from './apiConfig'
+import { getAsanas } from "./api/asana"
 
 // import AuthenticatedRoute from './components/shared/AuthenticatedRoute'
 import AutoDismissAlert from './components/shared/AutoDismissAlert/AutoDismissAlert'
@@ -44,22 +45,8 @@ const App = () => {
       )
     })
   }
-  const getAsanas = () => {
-    if (user != null) {
-      fetch(apiUrl + '/', {
-        // Requires user to be signed in
-        headers: {
-          'Authorization': 'Bearer ' + user.token
-        }
-      })
-        .then(res => {
-          console.log('These are the seeded asanas', res)
-          // return asanas.json()
-		})
-        .catch(error => console.log('Failed to fetch', error))
-    }
-  }
-  getAsanas()
+  	// Call
+	getAsanas()
 
 
 
