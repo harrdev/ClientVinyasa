@@ -23,6 +23,7 @@ const App = () => {
 
   const [user, setUser] = useState(null)
   const [msgAlerts, setMsgAlerts] = useState([])
+  let [pose, setPose] = useState([])
 
   console.log('user in app', user)
   console.log('message alerts', msgAlerts)
@@ -45,9 +46,17 @@ const App = () => {
       )
     })
   }
-  	// Call
-	getAsanas()
-
+  	// Call getAsanas API get function
+	// run getAsanas and 
+  const addPoses = () => {
+	  getAsanas()
+	  	.then(res => {
+			  setPose(res.data.asanas)
+		  })
+  }
+  useEffect(() => {
+	  addPoses()
+  }, [user])
 
 
   return (
@@ -75,7 +84,7 @@ const App = () => {
           path='/createroutine'
           element={
             <RequireAuth user={user}>
-              <CreateRoutine msgAlert={msgAlert} user={user} />
+              <CreateRoutine msgAlert={msgAlert} user={user} pose={pose} />
             </RequireAuth>
           }
         />
