@@ -3,6 +3,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { addAsana } from '../api/asana'
 
@@ -24,22 +25,22 @@ const CreateRoutine = (props) => {
     const addNewPose = (e) => {
         console.log("This is what's being saved to pose: ", e)
         setAddPose([...addPose, e])
-		console.log('Spread Operator', addPose)
+        console.log('Spread Operator', addPose)
     }
 
-	const displayPose = () => {
-		addPose.map((p, i) => {
-			return(
-				<li>
-					{p.englishName}
-				</li>
-			)
-		})
-	}
+    const displayPose = () => {
+        addPose.map((p, i) => {
+            return (
+                <li>
+                    {p.englishName}
+                </li>
+            )
+        })
+    }
 
-	useEffect(() => {
-		displayPose()
-	}, [addPose])
+    useEffect(() => {
+        displayPose()
+    }, [addPose])
 
     //*************** Map loop to iterate through selected difficulty level and display poses ******************/
     const allPoses = props.pose.map((p, i) => {
@@ -57,6 +58,9 @@ const CreateRoutine = (props) => {
                                 Difficulty: {p.difficulty}
                             </Card.Text>
                             <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Link to={`/posedetail/${p._id}`}>
+                                <Button variant="primary">Show Details</Button>
+                            </Link>
                         </Card.Body>
                     </Card>
                 )
@@ -117,11 +121,11 @@ const CreateRoutine = (props) => {
                     </ul>
                 </div>
                 <div className="buildRoutine">
-					<ul>
-						<div>
-							{addPose}
-						</div>
-					</ul>
+                    <ul>
+                        <div>
+                            {/* {addPose} */}
+                        </div>
+                    </ul>
                 </div>
             </div>
         </>

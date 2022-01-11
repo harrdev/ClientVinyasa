@@ -106,7 +106,7 @@ const App = () => {
           }
         />
         <Route
-          path='/posedetail'
+          path='/posedetail/:id'
           element={
             <RequireAuth user={user}>
               <PoseDetail msgAlert={msgAlert} user={user} pose={pose} />
