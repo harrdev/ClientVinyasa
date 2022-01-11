@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
@@ -12,7 +12,7 @@ const CreateRoutine = (props) => {
 
     // Define States
     const [difficulty, setDifficulty] = useState('')
-    const [savedPose, setSavedPose] = useState([])
+    const [addPose, setAddPose] = useState([])
 
     //***************** Change Handler Function for drop-down difficulty level *****************/
     const handleChange = (e) => {
@@ -21,10 +21,26 @@ const CreateRoutine = (props) => {
     }
 
     //**************** Add pose click handler to Routine *******************/
-    const addPose = (e) => {
+    const addNewPose = (e) => {
         console.log("This is what's being saved to pose: ", e)
-        setSavedPose(e)
+        setAddPose([...addPose, e])
+		console.log('Spread Operator', addPose)
     }
+
+	const displayPose = () => {
+		addPose.map((p, i) => {
+			return(
+				<li>
+					{p.englishName}
+				</li>
+			)
+		})
+	}
+
+	useEffect(() => {
+		displayPose()
+	}, [addPose])
+
     //*************** Map loop to iterate through selected difficulty level and display poses ******************/
     const allPoses = props.pose.map((p, i) => {
         if (difficulty === 'beginner') {
@@ -40,7 +56,7 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="primary" onClick={() => addPose(p)}>Add to Routine</Button>
+                            <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
                         </Card.Body>
                     </Card>
                 )
@@ -59,7 +75,7 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="primary" onClick={() => addPose(p)}>Add to Routine</Button>
+                            <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
                         </Card.Body>
                     </Card>
                 )
@@ -77,7 +93,7 @@ const CreateRoutine = (props) => {
                         <Card.Text>
                             Difficulty: {p.difficulty}
                         </Card.Text>
-                        <Button variant="primary" onClick={() => addPose(p)}>Add to Routine</Button>
+                        <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
                     </Card.Body>
                 </Card>
             )
@@ -101,6 +117,11 @@ const CreateRoutine = (props) => {
                     </ul>
                 </div>
                 <div className="buildRoutine">
+					<ul>
+						<div>
+							{addPose}
+						</div>
+					</ul>
                 </div>
             </div>
         </>
