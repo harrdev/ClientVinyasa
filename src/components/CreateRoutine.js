@@ -16,13 +16,14 @@ const CreateRoutine = (props) => {
 
     //***************** Change Handler Function for drop-down difficulty level *****************/
     const handleChange = (e) => {
-        console.log('this is e', e)
+        // console.log('this is e', e)
         setDifficulty(e)
     }
 
-    //**************** Add pose to Routine *******************/
+    //**************** Add pose click handler to Routine *******************/
     const addPose = (e) => {
-        // Need to add to state
+        console.log("This is what's being saved to pose: ", e)
+        setSavedPose(e)
     }
     //*************** Map loop to iterate through selected difficulty level and display poses ******************/
     const allPoses = props.pose.map((p, i) => {
@@ -100,7 +101,6 @@ const CreateRoutine = (props) => {
                     </ul>
                 </div>
                 <div className="buildRoutine">
-                    
                 </div>
             </div>
         </>
