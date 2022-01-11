@@ -80,6 +80,9 @@ const CreateRoutine = (props) => {
                                 Difficulty: {p.difficulty}
                             </Card.Text>
                             <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Link to={`/posedetail/${p._id}`}>
+                                <Button variant="primary">Show Details</Button>
+                            </Link>
                         </Card.Body>
                     </Card>
                 )
@@ -98,6 +101,9 @@ const CreateRoutine = (props) => {
                             Difficulty: {p.difficulty}
                         </Card.Text>
                         <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                        <Link to={`/posedetail/${p._id}`}>
+                            <Button variant="primary">Show Details</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             )
