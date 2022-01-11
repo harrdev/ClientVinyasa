@@ -3,22 +3,23 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+
 const CreateRoutine = (props) => {
     // const { msgAlert, user } = props
     console.log('props in Create Routine', props)
 
     // Define States
     const [difficulty, setDifficulty] = useState('')
-
-    // Create drowpdown list to select beginner, intermediate, advanced
-
+    const [savedPose, setSavedPose] = useState([])
+    
+    //***************** Change Handler Function for drop-down difficulty level *****************/
     const handleChange = (e) => {
         console.log('this is e', e)
         setDifficulty(e)
     }
 
-
-    // Maps through all poses based on which difficulty is set in state and renders cards
+    //*************** Map loop to iterate through selected difficulty level and display poses ******************/
     const allPoses = props.pose.map((p, i) => {
         if (difficulty === 'beginner') {
             while (p.difficulty === 'beginner') {
@@ -76,21 +77,27 @@ const CreateRoutine = (props) => {
             )
         }
     })
+
     // Create drag and drop list for selected poses.  Add in remove functionality as well.  Also, a timer in the selected poses section.  If overall timer is longer than cumulitive pose timer, adjust pose timers to equal overall timer
+
     return (
         <>
-            <div>
-                <h2>Create Routine Page</h2>
-                <DropdownButton id="dropdown-basic-button" title={difficulty} onSelect={handleChange}>
-                    <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>
-                    <Dropdown.Item eventKey='intermediate'>Intermediate</Dropdown.Item>
-                    <Dropdown.Item eventKey='advanced'>Advanced</Dropdown.Item>
-                </DropdownButton>
-                <ul>
-                    {allPoses}
-                </ul>
+            <div className="routinePage">
+                <div className="asanaCards">
+                    <h2>Create Routine Page</h2>
+                    <DropdownButton id="dropdown-basic-button" title={difficulty} onSelect={handleChange}>
+                        <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>
+                        <Dropdown.Item eventKey='intermediate'>Intermediate</Dropdown.Item>
+                        <Dropdown.Item eventKey='advanced'>Advanced</Dropdown.Item>
+                    </DropdownButton>
+                    <ul>
+                        {allPoses}
+                    </ul>
+                </div>
+                <div className="buildRoutine">
+                    
+                </div>
             </div>
-
         </>
     )
 }

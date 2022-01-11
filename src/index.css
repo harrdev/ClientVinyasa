@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.asanaCards {
+  width: 600px;
+  background-color: yellow;
+  display: inline-block;
+}
+
+.buildRoutine {
+  width: 400px;
+  background-color: red;
+  display: inline-block;
+}
