@@ -28,19 +28,18 @@ const CreateRoutine = (props) => {
         console.log('Spread Operator', addPose)
     }
 
-    const displayPose = () => {
-        addPose.map((p, i) => {
-            return (
-                <li>
+    const displayPose = addPose.map((p, i) => {
+			return (
+				<li className="addedPoses">
                     {p.englishName}
-                </li>
+				</li>
             )
-        })
-    }
+		// console.log('This is the map: ', test)
+    })
 
-    useEffect(() => {
-        displayPose()
-    }, [addPose])
+    // useEffect(() => {
+    //     displayPose()
+    // }, [addPose])
 
     //*************** Map loop to iterate through selected difficulty level and display poses ******************/
     const allPoses = props.pose.map((p, i) => {
@@ -127,10 +126,8 @@ const CreateRoutine = (props) => {
                     </ul>
                 </div>
                 <div className="buildRoutine">
-                    <ul>
-                        <div>
-                            {/* {addPose} */}
-                        </div>
+                    <ul className="buildPractice">
+                        {displayPose}
                     </ul>
                 </div>
             </div>

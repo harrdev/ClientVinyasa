@@ -23,3 +23,13 @@ code {
   background-color: red;
   display: inline-block;
 }
+
+.addedPoses {
+  background-color: blueviolet;
+  border: 10px solid black;
+}
+
+.buildPractice {
+  position: absolute;
+  top: 100px;
+}
