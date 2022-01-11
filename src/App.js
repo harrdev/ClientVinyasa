@@ -109,7 +109,7 @@ const App = () => {
           path='/posedetail'
           element={
             <RequireAuth user={user}>
-              <PoseDetail msgAlert={msgAlert} user={user} />
+              <PoseDetail msgAlert={msgAlert} user={user} pose={pose} />
             </RequireAuth>
           }
         />
