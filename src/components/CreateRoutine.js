@@ -146,7 +146,7 @@ const CreateRoutine = (props) => {
                     <form onSubmit={handleSubmit} className="routineForm">
                         <label for="name"></label>
                         <input type="text" id="name" name="name" value=""></input>
-                        <input type="hidden" value={addPose}></input>
+                        <input type="hidden" id="routine" name="routine" value={addPose}></input>
                         <input type="submit" value="Submit"></input>
                     </form>
                     <button onClick={() => clearRoutinePane()}>Clear</button>
