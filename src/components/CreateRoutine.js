@@ -10,13 +10,11 @@ import StartRoutine from './StartRoutine'
 
 const CreateRoutine = (props) => {
     const { msgAlert, user } = props
-    // console.log('props in Create Routine', props)
 
     //********************* Define States *******************//
     const [difficulty, setDifficulty] = useState('')
     let [addPose, setAddPose] = useState([])
     const [formName, setFormName] = useState('')
-    // FOR FORM SUBMISSION, WE WILL NEED TO ASSIGN formData.name AND formData.routine
 
     //***************** Handler to change drop-down difficulty level *****************/
     const handleChange = (e) => {
@@ -30,7 +28,6 @@ const CreateRoutine = (props) => {
 
     //******************* Handler Clear User Routine Panel ******************/
     function clearRoutinePane() {
-        // console.log("formData on clear: ", formData)
         setAddPose([])
     }
 
@@ -48,11 +45,9 @@ const CreateRoutine = (props) => {
     }
 
     //*************** Handler for form submit *****************/
-    // NEEDS TO BE FINISHED - NOT FUNCTIONAL
     const handleSubmit = (e) => {
         e.preventDefault()
         setFormName(e.target.value)
-        // setFormRoutine(addPose)
         const formData = {
             name: formName,
             routine: addPose
