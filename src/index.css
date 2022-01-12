@@ -44,4 +44,15 @@ code {
   position: absolute;
   top: 60px;
   left: 700px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.practice {
+  list-style-type: none;
+}
+
+.poseDetail {
+  height: 600px;
+  width: 600px;
 }

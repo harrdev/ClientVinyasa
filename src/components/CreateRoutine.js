@@ -5,44 +5,36 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import { addAsana } from '../api/asana'
 
 const CreateRoutine = (props) => {
     const { msgAlert, user } = props
     console.log('props in Create Routine', props)
 
-    // Define States
+    //********************* Define States *******************//
     const [difficulty, setDifficulty] = useState('')
     let [addPose, setAddPose] = useState([])
 
-    //***************** Change Handler Function for drop-down difficulty level *****************/
+    //***************** Handler to change drop-down difficulty level *****************/
     const handleChange = (e) => {
         // console.log('this is e', e)
         setDifficulty(e)
     }
 
-    //**************** Add pose click handler to Routine *******************/
+    //**************** Handler to add pose to Routine *******************/
     const addNewPose = (e) => {
         console.log("This is what's being saved to pose: ", e)
         setAddPose([...addPose, e])
         console.log('Spread Operator', addPose)
     }
 
-    const displayPose = addPose.map((p, i) => {
-        return (
-            <li className="addedPoses">
-                {p.englishName}
-            </li>
-        )
-    })
-    //******************* Clear User Routine Panel ******************/
-    function clearRoutinePane () {
+    //******************* Handler Clear User Routine Panel ******************/
+    function clearRoutinePane() {
         setAddPose([])
     }
 
+    //******************** Handler for Drag and Drop ******************/
     function handleOnDragEnd(result) {
         if (!result.destination) return;
-
         const poses = Array.from(addPose);
         const [reorderedItem] = poses.splice(result.source.index, 1);
         poses.splice(result.destination.index, 0, reorderedItem);
@@ -50,7 +42,7 @@ const CreateRoutine = (props) => {
         setAddPose(poses);
     }
 
-    //*************** Map loop to iterate through selected difficulty level and display poses ******************/
+    //*************** Loop to iterate through selected difficulty and display ******************/
     const allPoses = props.pose.map((p, i) => {
         if (difficulty === 'beginner') {
             while (p.difficulty === 'beginner') {
@@ -117,8 +109,6 @@ const CreateRoutine = (props) => {
             )
         }
     })
-
-    // Create drag and drop list for selected poses.  Add in remove functionality as well.  Also, a timer in the selected poses section.  If overall timer is longer than cumulitive pose timer, adjust pose timers to equal overall timer
 
     return (
         <>
