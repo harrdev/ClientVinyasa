@@ -13,13 +13,14 @@ code {
 }
 
 .asanaCards {
-  width: 600px;
+  width: 50%;
   background-color: yellow;
   display: inline-block;
+  margin: 10px 0px 10px 0px;
 }
 
 .buildRoutine {
-  width: 400px;
+  width: 50%;
   background-color: red;
   display: inline-block;
 }
@@ -38,12 +39,13 @@ code {
   height: 200px;
   width: 300px;
   background-color: purple;
+  margin: 10px 0px 10px 0px;
 }
 
 .practicePane {
   position: absolute;
   top: 60px;
-  left: 700px;
+  left: 55%;
   text-align: center;
   margin: 0 auto;
 }
@@ -55,4 +57,21 @@ code {
 .poseDetail {
   height: 600px;
   width: 600px;
+}
+
+#dropdown-basic-button {
+  margin-bottom: 50px;
+}
+
+.addedCards {
+  width: 70px;
+  height: 70px;
+}
+
+.cards {
+  margin: 10px 0px 10px 0px;
+}
+
+.pageTitle {
+  text-align: center;
 }

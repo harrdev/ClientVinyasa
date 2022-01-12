@@ -90,8 +90,8 @@ const CreateRoutine = (props) => {
         }
         else {
             return (
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src={p.imageUrl} alt={p.englishName} />
+                <Card className="cards" style={{ width: '18rem' }}>
+                    <Card.Img variant="top" className="cards" src={p.imageUrl} alt={p.englishName} />
                     <Card.Body>
                         <Card.Title>{p.englishName}</Card.Title>
                         <Card.Text>
@@ -114,7 +114,7 @@ const CreateRoutine = (props) => {
         <>
             <div className="routinePage">
                 <div className="asanaCards">
-                    <h2>Create Routine Page</h2>
+                    <h2 className="pageTitle">Selected Difficulty Poses</h2>
                     <DropdownButton id="dropdown-basic-button" title={difficulty} onSelect={handleChange}>
                         <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>
                         <Dropdown.Item eventKey='intermediate'>Intermediate</Dropdown.Item>
@@ -125,6 +125,7 @@ const CreateRoutine = (props) => {
                     </ul>
                 </div>
                 <div className="practicePane">
+                <h2 className="pageTitle">Create your Routine</h2>
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="addToPractice">
                             {(provided) => (
@@ -135,7 +136,7 @@ const CreateRoutine = (props) => {
                                                 {(provided) => (
                                                     <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                         <div className="practiceCard">
-                                                            <img src={imageUrl} alt={`${englishName}} Thumb`} height="70px" width="70px" />
+                                                            <img src={imageUrl} className="addedCards" alt={`${englishName}} Thumb`} />
                                                             <p>
                                                                 {englishName}
                                                             </p>
