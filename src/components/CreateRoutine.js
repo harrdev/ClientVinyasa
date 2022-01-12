@@ -33,7 +33,7 @@ const CreateRoutine = (props) => {
 
     //******************* Handler Clear User Routine Panel ******************/
     function clearRoutinePane() {
-        console.log("Current form data: ", formData)
+        console.log("formData on clear: ", formData)
         setAddPose([])
     }
 
@@ -54,9 +54,13 @@ const CreateRoutine = (props) => {
     // NEEDS TO BE FINISHED - NOT FUNCTIONAL
     const handleSubmit = (e) => {
         e.preventDefault()
-        setFormData({'name': addPose})
         setFormData({'routine': addPose})
-        console.log("This is the submitted form data: ", formData)
+        console.log("FormData on submit ", formData)
+    }
+
+    const handleName = (e) => {
+        console.log("target name: ", e.target.value)
+        setFormData({'name': e.target.value})
     }
 
     //*************** Loop to iterate through selected difficulty and display ******************/
@@ -152,7 +156,7 @@ const CreateRoutine = (props) => {
                     <h2 className="pageTitle">Create your Routine</h2>
                     <form onSubmit={handleSubmit} className="routineForm">
                         <label for="name"></label>
-                        <input type="text" id="name" name="name" value=""></input>
+                        <input type="text" id="name" name="name" onChange={handleName}></input>
                         <input type="hidden" id="routine" name="routine" value={addPose}></input>
                         <input type="submit" value="Submit"></input>
                     </form>
