@@ -39,10 +39,13 @@ const CreateRoutine = (props) => {
 
     //******************** Handler for Drag and Drop ******************/
     function handleOnDragEnd(result) {
-        if (!result.destination) return;
         const poses = Array.from(addPose);
         const [reorderedItem] = poses.splice(result.source.index, 1);
-        poses.splice(result.destination.index, 0, reorderedItem);
+        if (!result.destination) {
+            poses.splice(result.source.index, 0)
+        } else {
+            poses.splice(result.destination.index, 0, reorderedItem);
+        }
         console.log("Updated state of addedPoses: ", addPose)
         setAddPose(poses);
     }
