@@ -1,5 +1,7 @@
+import CreateRoutine from "./CreateRoutine"
+
 const StartRoutine = (props) => {
-	// const { msgAlert, user } = props
+	const { msgAlert, user, addPose } = props
 	console.log('props in start routine', props)
 
 	return (

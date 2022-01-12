@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { addRoutine } from '../api/routine'
+import StartRoutine from './StartRoutine'
 
 const CreateRoutine = (props) => {
     const { msgAlert, user } = props
@@ -32,6 +33,7 @@ const CreateRoutine = (props) => {
 
     //******************* Handler Clear User Routine Panel ******************/
     function clearRoutinePane() {
+        console.log("Current form data: ", formData)
         setAddPose([])
     }
 
@@ -49,8 +51,9 @@ const CreateRoutine = (props) => {
     // NEEDS TO BE FINISHED - NOT FUNCTIONAL
     const handleSubmit = (e) => {
         e.preventDefault()
-        setFormData()
-        addRoutine(user, formData)
+        setFormData({'name': addPose})
+        setFormData({'routine': addPose})
+        console.log("This is the submitted form data: ", formData)
     }
 
     //*************** Loop to iterate through selected difficulty and display ******************/
@@ -125,6 +128,7 @@ const CreateRoutine = (props) => {
 
     return (
         <>
+        <StartRoutine routine={addPose} />
             <div className="routinePage">
                 <div className="asanaCards">
                     <h2 className="pageTitle">Selected Difficulty Poses</h2>
@@ -150,6 +154,9 @@ const CreateRoutine = (props) => {
                         <input type="submit" value="Submit"></input>
                     </form>
                     <button onClick={() => clearRoutinePane()}>Clear</button>
+                            <Link to={'/startroutine'}>
+                                <Button variant="primary">Start Routine</Button>
+                            </Link>
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="addToPractice">
                             {(provided) => (
