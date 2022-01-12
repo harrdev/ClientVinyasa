@@ -14,7 +14,8 @@ const CreateRoutine = (props) => {
     //********************* Define States *******************//
     const [difficulty, setDifficulty] = useState('')
     let [addPose, setAddPose] = useState([])
-    const [formData, setFormData] = useState('')
+    const [formData, setFormData] = useState({ name: '', routine: [] })
+    // FOR FORM SUBMISSION, WE WILL NEED TO ASSIGN formData.name AND formData.routine FROM THE SUBMIT
 
     //***************** Handler to change drop-down difficulty level *****************/
     const handleChange = (e) => {
@@ -172,11 +173,6 @@ const CreateRoutine = (props) => {
                         </Droppable>
                     </DragDropContext>
                 </div>
-                {/* <div className="buildRoutine">
-                    <ul className="buildPractice">
-                        {displayPose}
-                    </ul>
-                </div> */}
             </div>
         </>
     )
