@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { addRoutine } from '../api/routine'
 
 const CreateRoutine = (props) => {
     const { msgAlert, user } = props
@@ -13,6 +14,7 @@ const CreateRoutine = (props) => {
     //********************* Define States *******************//
     const [difficulty, setDifficulty] = useState('')
     let [addPose, setAddPose] = useState([])
+    const [formData, setFormData] = useState('')
 
     //***************** Handler to change drop-down difficulty level *****************/
     const handleChange = (e) => {
@@ -40,6 +42,14 @@ const CreateRoutine = (props) => {
         poses.splice(result.destination.index, 0, reorderedItem);
         console.log("Updated state of addedPoses: ", addPose)
         setAddPose(poses);
+    }
+
+    //*************** Handler for form submit *****************/
+    // NEEDS TO BE FINISHED - NOT FUNCTIONAL
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        setFormData()
+        addRoutine(user, formData)
     }
 
     //*************** Loop to iterate through selected difficulty and display ******************/
@@ -125,7 +135,14 @@ const CreateRoutine = (props) => {
                     </ul>
                 </div>
                 <div className="practicePane">
-                <h2 className="pageTitle">Create your Routine</h2>
+                    <h2 className="pageTitle">Create your Routine</h2>
+                    <form onSubmit={handleSubmit} className="routineForm">
+                        <label for="name"></label>
+                        <input type="text" id="name" name="name" value=""></input>
+                        <input type="hidden" value={addPose}></input>
+                        <input type="submit" value="Submit"></input>
+                    </form>
+                    <button onClick={() => clearRoutinePane()}>Clear</button>
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="addToPractice">
                             {(provided) => (
@@ -154,7 +171,6 @@ const CreateRoutine = (props) => {
                             )}
                         </Droppable>
                     </DragDropContext>
-                    <button onClick={() => clearRoutinePane()}>Clear</button>
                 </div>
                 {/* <div className="buildRoutine">
                     <ul className="buildPractice">

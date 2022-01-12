@@ -13,14 +13,14 @@ code {
 }
 
 .asanaCards {
-  width: 50%;
+  width: 75%;
   background-color: yellow;
   display: inline-block;
   margin: 10px 0px 10px 0px;
 }
 
 .buildRoutine {
-  width: 50%;
+  width: 25%;
   background-color: red;
   display: inline-block;
 }
@@ -45,7 +45,7 @@ code {
 .practicePane {
   position: absolute;
   top: 60px;
-  left: 55%;
+  left: 75%;
   text-align: center;
   margin: 0 auto;
 }
