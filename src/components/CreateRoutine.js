@@ -68,7 +68,7 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
                                 <Button variant="primary">Show Details</Button>
                             </Link>
@@ -90,7 +90,7 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
                                 <Button variant="primary">Show Details</Button>
                             </Link>
@@ -101,22 +101,24 @@ const CreateRoutine = (props) => {
         }
         else {
             return (
-                <Card className="cards" style={{ width: '18rem' }}>
-                    <Card.Img variant="top" className="cards" src={p.imageUrl} alt={p.englishName} />
-                    <Card.Body>
-                        <Card.Title>{p.englishName}</Card.Title>
-                        <Card.Text>
-                            {p.sanskritName}
-                        </Card.Text>
-                        <Card.Text>
-                            Difficulty: {p.difficulty}
-                        </Card.Text>
-                        <Button variant="primary" onClick={() => addNewPose(p)}>Add to Routine</Button>
-                        <Link to={`/posedetail/${p._id}`}>
-                            <Button variant="primary">Show Details</Button>
-                        </Link>
-                    </Card.Body>
-                </Card>
+                <div>
+                    <Card className="cards" style={{ width: '18rem' }}>
+                        <Card.Img variant="top" className="cards" src={p.imageUrl} alt={p.englishName} />
+                        <Card.Body>
+                            <Card.Title>{p.englishName}</Card.Title>
+                            <Card.Text>
+                                {p.sanskritName}
+                            </Card.Text>
+                            <Card.Text>
+                                Difficulty: {p.difficulty}
+                            </Card.Text>
+                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Link to={`/posedetail/${p._id}`}>
+                                <Button variant="primary">Show Details</Button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                </div>
             )
         }
     })
@@ -126,13 +128,17 @@ const CreateRoutine = (props) => {
             <div className="routinePage">
                 <div className="asanaCards">
                     <h2 className="pageTitle">Selected Difficulty Poses</h2>
-                    <DropdownButton id="dropdown-basic-button" title={difficulty} onSelect={handleChange}>
-                        <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>
-                        <Dropdown.Item eventKey='intermediate'>Intermediate</Dropdown.Item>
-                        <Dropdown.Item eventKey='advanced'>Advanced</Dropdown.Item>
-                    </DropdownButton>
+                    <div className="difficulty">
+                        <DropdownButton id="dropdown-item-button" title={difficulty} onSelect={handleChange}>
+                            <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>
+                            <Dropdown.Item eventKey='intermediate'>Intermediate</Dropdown.Item>
+                            <Dropdown.Item eventKey='advanced'>Advanced</Dropdown.Item>
+                        </DropdownButton>
+                    </div>
                     <ul>
-                        {allPoses}
+                        <div className="flex-container">
+                            {allPoses}
+                        </div>
                     </ul>
                 </div>
                 <div className="practicePane">

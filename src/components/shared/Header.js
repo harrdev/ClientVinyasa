@@ -14,11 +14,6 @@ const authenticatedOptions = (
 			</Link>
 		</Nav.Link>
 		<Nav.Link>
-			<Link to='./posedetail' style={linkStyle}>
-				Pose Detail
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
 			<Link to='./startroutine' style={linkStyle}>
 				Start Routine
 			</Link>

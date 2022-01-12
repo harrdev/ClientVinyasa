@@ -75,3 +75,14 @@ code {
 .pageTitle {
   text-align: center;
 }
+
+.flex-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.difficulty {
+  display: block;
+  margin: 60px;
+}
