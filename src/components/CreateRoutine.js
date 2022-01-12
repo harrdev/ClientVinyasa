@@ -10,30 +10,27 @@ import StartRoutine from './StartRoutine'
 
 const CreateRoutine = (props) => {
     const { msgAlert, user } = props
-    console.log('props in Create Routine', props)
+    // console.log('props in Create Routine', props)
 
     //********************* Define States *******************//
     const [difficulty, setDifficulty] = useState('')
     let [addPose, setAddPose] = useState([])
-    const [formData, setFormData] = useState({ name: '', routine: [] })
+    const [formName, setFormName] = useState('')
     // FOR FORM SUBMISSION, WE WILL NEED TO ASSIGN formData.name AND formData.routine
 
     //***************** Handler to change drop-down difficulty level *****************/
     const handleChange = (e) => {
-        // console.log('this is e', e)
         setDifficulty(e)
     }
 
     //**************** Handler to add pose to Routine *******************/
     const addNewPose = (e) => {
-        console.log("This is what's being saved to pose: ", e)
         setAddPose([...addPose, e])
-        console.log('Spread Operator', addPose)
     }
 
     //******************* Handler Clear User Routine Panel ******************/
     function clearRoutinePane() {
-        console.log("formData on clear: ", formData)
+        // console.log("formData on clear: ", formData)
         setAddPose([])
     }
 
@@ -54,13 +51,20 @@ const CreateRoutine = (props) => {
     // NEEDS TO BE FINISHED - NOT FUNCTIONAL
     const handleSubmit = (e) => {
         e.preventDefault()
-        setFormData({'routine': addPose})
+        setFormName(e.target.value)
+        // setFormRoutine(addPose)
+        const formData = {
+            name: formName,
+            routine: addPose
+        }
         console.log("FormData on submit ", formData)
+        addRoutine(formData, user)
     }
 
     const handleName = (e) => {
+        e.preventDefault()
         console.log("target name: ", e.target.value)
-        setFormData({'name': e.target.value})
+        setFormName(e.target.value)
     }
 
     //*************** Loop to iterate through selected difficulty and display ******************/
@@ -135,7 +139,6 @@ const CreateRoutine = (props) => {
 
     return (
         <>
-        <StartRoutine routine={addPose} />
             <div className="routinePage">
                 <div className="asanaCards">
                     <h2 className="pageTitle">Selected Difficulty Poses</h2>
@@ -156,14 +159,14 @@ const CreateRoutine = (props) => {
                     <h2 className="pageTitle">Create your Routine</h2>
                     <form onSubmit={handleSubmit} className="routineForm">
                         <label for="name"></label>
-                        <input type="text" id="name" name="name" onChange={handleName}></input>
+                        <input type="text" id="name" name="name" value={formName} onChange={handleName}></input>
                         <input type="hidden" id="routine" name="routine" value={addPose}></input>
                         <input type="submit" value="Submit"></input>
                     </form>
                     <button onClick={() => clearRoutinePane()}>Clear</button>
-                            <Link to={'/startroutine'}>
-                                <Button variant="primary">Start Routine</Button>
-                            </Link>
+                    <Link to={'/startroutine'}>
+                        <Button variant="primary">Start Routine</Button>
+                    </Link>
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="addToPractice">
                             {(provided) => (
