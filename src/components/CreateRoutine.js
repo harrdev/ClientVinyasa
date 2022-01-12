@@ -16,7 +16,7 @@ const CreateRoutine = (props) => {
     const [difficulty, setDifficulty] = useState('')
     let [addPose, setAddPose] = useState([])
     const [formData, setFormData] = useState({ name: '', routine: [] })
-    // FOR FORM SUBMISSION, WE WILL NEED TO ASSIGN formData.name AND formData.routine FROM THE SUBMIT
+    // FOR FORM SUBMISSION, WE WILL NEED TO ASSIGN formData.name AND formData.routine
 
     //***************** Handler to change drop-down difficulty level *****************/
     const handleChange = (e) => {
