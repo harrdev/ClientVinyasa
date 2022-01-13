@@ -24,13 +24,6 @@ const Profile = (props) => {
         getUserPoses()
     }, [])
 
-    // const preview = () => {
-    //     for (let i = 0; i < 9; i++) {
-    //         console.log(userRoutines[0].routine[i].imageUrl)
-    //         return userRoutines[0].routine[i].imageUrl
-    //     }
-    // }
-
     //****************** Handler to delete a saved practice *********************/
     const handleDelete = (r) => {
         deleteRoutine(r._id, user)
@@ -39,25 +32,24 @@ const Profile = (props) => {
 
     //****************** Handler to edit a saved practice name *******************/
     // This is setup to pass the edited data to the CreateRoutine page
-    // const handleEdit = (r) => {
-    //     console.log("This is r: ", r)
-    //     setEditRoutine(r)
-    //     console.log("This is the editRoutine data: ", editRoutine)
-    // }
+    const handleEdit = (r) => {
+        console.log("This is r: ", r.name)
+    }
 
     //******************* Loop to display all saved routines *********************/
     const usersRoutines = userRoutines.map((r, i) => {
-        // console.log("image??: ", r.routine[0].imageUrl)
         return (
             <li key={i}>
                 <div>
-                    <div>
+                    <div> 
                         {r.name}
                         <img className="profilePic" src={r.routine[0].imageUrl}></img>
+                        <img className="profilePic" src={r.routine[1].imageUrl}></img>
+                        <img className="profilePic" src={r.routine[2].imageUrl}></img>
                     </div>
                     <div>
                         <button>Start Routine</button>
-                        {/* <button onClick={() => handleEdit(r)}>Edit</button> */}
+                        <button onClick={() => handleEdit(r)}>Edit Name</button>
                         <button onClick={() => handleDelete(r)}>Delete</button>
                     </div>
                 </div>

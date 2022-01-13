@@ -38,6 +38,23 @@ export const getRoutine = (res) => {
     .catch((error) => console.log(error))
 }
 
+// ****************** API call to show saved practices ************//
+export const getSelectedRoutine = (res) => {
+    console.log('getRoutine API call hit')
+    console.log('this is the request ID', res)
+    return axios({
+    method: 'GET',
+    headers: {
+        "Authorization": `Bearer ${res.token}`
+    },
+    url: apiUrl + '/startroutine/:id'
+    })
+    .then(res => {
+        console.log('getRoutine client API request sent', res.data)
+        return res
+    })
+    .catch((error) => console.log(error))
+}
 //****************** API call to delete a saved routine *****************//
 export const deleteRoutine = (id, user) => {
     console.log('This is the id of the userRoutine: ', id)
@@ -53,7 +70,7 @@ export const deleteRoutine = (id, user) => {
 //****************** API call to edit a saved routine *****************//
 export const editRoutine = (editedName, user) => {
 	return axios({
-		url: `${apiUrl}/profile`,
+		url: `${apiUrl}/startroutine`,
 		method: 'PATCH',
 		headers: {
 			Authorization: `Token token=${user.token}`,
