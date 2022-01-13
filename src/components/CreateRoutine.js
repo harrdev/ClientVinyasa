@@ -9,7 +9,6 @@ import { addRoutine } from '../api/routine'
 
 const CreateRoutine = (props) => {
     const { user } = props
-
     //********************* Define States *******************//
     const [difficulty, setDifficulty] = useState('')
     let [addPose, setAddPose] = useState([])
@@ -161,6 +160,8 @@ const CreateRoutine = (props) => {
                     {/* <Link to={'/startroutine'}>
                         <Button variant="primary">Start Routine</Button>
                     </Link> */}
+                    {/* Comment#1 - Drag/Drop context becomes a reusable component that takes a routine as a prop in addition to what it already is getting as props.  If a routine exists it shows that routine, if you're creating a new routine it shows as it does now
+                    Comment#2 - when createRoutine calls this new component, the routine is null until otherwise built.  When createRoutine is called on the edit page, it's passed the routine so that it popoulates this drag/drop context*/}
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="addToPractice">
                             {(provided) => (

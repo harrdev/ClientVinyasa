@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom'
 import { deleteRoutine, editRoutine } from '../api/routine'
 import { getRoutine } from '../api/routine'
 import { useEffect, useState } from 'react'
+import CreateRoutine from './CreateRoutine'
 
 const Profile = (props) => {
-    const { user } = props
+    const { user, pose } = props
     const [userRoutines, setUserRoutines] = useState([])
-
+    const [editRoutine, setEditRoutine] = useState([])
     //********************** API call to userRoutines DB for saved routines ***************************/
 	const getUserPoses = () => {
 		getRoutine(user)
@@ -34,16 +35,15 @@ const Profile = (props) => {
     const handleDelete = (r) => {
         deleteRoutine(r._id, user)
         getUserPoses()
-            // .then(res => {
-            //     console.log(res)
-            //     getRoutine(user)
-            // })
     }
 
     //****************** Handler to edit a saved practice name *******************/
-    const handleEdit = (r) => {
-        editRoutine()
-    }
+    // This is setup to pass the edited data to the CreateRoutine page
+    // const handleEdit = (r) => {
+    //     console.log("This is r: ", r)
+    //     setEditRoutine(r)
+    //     console.log("This is the editRoutine data: ", editRoutine)
+    // }
 
     //******************* Loop to display all saved routines *********************/
     const usersRoutines = userRoutines.map((r, i) => {
@@ -57,7 +57,7 @@ const Profile = (props) => {
                     </div>
                     <div>
                         <button>Start Routine</button>
-                        <button>Edit</button>
+                        {/* <button onClick={() => handleEdit(r)}>Edit</button> */}
                         <button onClick={() => handleDelete(r)}>Delete</button>
                     </div>
                 </div>
