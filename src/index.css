@@ -86,3 +86,8 @@ code {
   display: block;
   left: 50%;
 }
+
+.profilePic {
+  height: 75px;
+  width: 75px;
+}

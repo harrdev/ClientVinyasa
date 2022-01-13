@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import Card from 'react-bootstrap/Card'
@@ -6,10 +6,9 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { addRoutine } from '../api/routine'
-import StartRoutine from './StartRoutine'
 
 const CreateRoutine = (props) => {
-    const { msgAlert, user } = props
+    const { user } = props
 
     //********************* Define States *******************//
     const [difficulty, setDifficulty] = useState('')
@@ -40,7 +39,6 @@ const CreateRoutine = (props) => {
         } else {
             poses.splice(result.destination.index, 0, reorderedItem);
         }
-        console.log("Updated state of addedPoses: ", addPose)
         setAddPose(poses);
     }
 
@@ -52,13 +50,11 @@ const CreateRoutine = (props) => {
             name: formName,
             routine: addPose
         }
-        console.log("FormData on submit ", formData)
         addRoutine(formData, user)
     }
 
     const handleName = (e) => {
         e.preventDefault()
-        console.log("target name: ", e.target.value)
         setFormName(e.target.value)
     }
 

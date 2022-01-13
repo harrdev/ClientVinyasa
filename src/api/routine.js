@@ -23,6 +23,7 @@ export const addRoutine = (info, user) => {
 // ****************** API call to show saved practices ************//
 
 export const getRoutine = (res) => {
+    console.log('getRoutine API call hit')
     // console.log('this is the user', user)
     return axios({
     method: 'GET',
@@ -36,4 +37,15 @@ export const getRoutine = (res) => {
         return res
     })
     .catch((error) => console.log(error))
+}
+
+export const deleteRoutine = (id, user) => {
+    console.log('This is the id of the userRoutine: ', id)
+    return axios({
+        url: `${apiUrl}/profile/${id}`,
+        method: 'DELETE',
+        headers: {
+        	Authorization: `Token token=${user.token}`,
+        },
+    })
 }
