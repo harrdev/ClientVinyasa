@@ -156,12 +156,15 @@ const CreateRoutine = (props) => {
                         <label for="name"></label>
                         <input type="text" id="name" name="name" value={formName} onChange={handleName}></input>
                         <input type="hidden" id="routine" name="routine" value={addPose}></input>
-                        <input type="submit" value="Submit"></input>
+                        {/* <input type="submit" value="Submit"></input> */}
+						{/* <Link to={'/startroutine'}> */}
+						<input type="submit" value="Submit"></input>
+                    	{/* </Link> */}
                     </form>
                     <button onClick={() => clearRoutinePane()}>Clear</button>
-                    <Link to={'/startroutine'}>
+                    {/* <Link to={'/startroutine'}>
                         <Button variant="primary">Start Routine</Button>
-                    </Link>
+                    </Link> */}
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="addToPractice">
                             {(provided) => (
