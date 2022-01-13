@@ -1,10 +1,31 @@
 import { Link } from 'react-router-dom'
 import { deleteRoutine, editRoutine } from '../api/routine'
 import { getRoutine } from '../api/routine'
+import { useEffect, useState } from 'react'
 
 const Profile = (props) => {
-    const { userRoutines, user } = props
+    const { user } = props
+    const [userRoutines, setUserRoutines] = useState([])
+    const [dummyArray, setDummyArray] = useState('0')
 
+    //********************** API call to userRoutines DB for saved routines ***************************/
+	const getUserPoses = () => {
+		getRoutine(user)
+			.then(res => {
+				res = Object.values(res.data.routine)
+				setUserRoutines(res)
+			})
+            .then (res=> {
+                stateUpdate()
+            })
+            .catch(error => {
+                console.log("error resolving")
+            })
+	}
+
+    useEffect (() => {
+        getUserPoses()
+    }, [])
     // const preview = () => {
     //     for (let i = 0; i < 9; i++) {
     //         console.log(userRoutines[0].routine[i].imageUrl)
@@ -15,10 +36,15 @@ const Profile = (props) => {
     //****************** Handler to delete a saved practice *********************/
     const handleDelete = (r) => {
         deleteRoutine(r._id, user)
+        getUserPoses()
             // .then(res => {
             //     console.log(res)
             //     getRoutine(user)
             // })
+    }
+
+    const stateUpdate = () => {
+        setDummyArray('1')
     }
 
     //****************** Handler to edit a saved practice name *******************/

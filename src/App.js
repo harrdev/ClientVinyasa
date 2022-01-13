@@ -21,7 +21,6 @@ const App = () => {
 	const [user, setUser] = useState(null)
 	const [msgAlerts, setMsgAlerts] = useState([])
 	let [pose, setPose] = useState([])
-	const [userRoutines, setUserRoutines] = useState([])
 
 	console.log('user in app', user)
 	console.log('message alerts', msgAlerts)
@@ -54,24 +53,12 @@ const App = () => {
 			})
 	}
 
-	//********************** API call to userRoutines DB for saved routines ***************************/
-	const getUserPoses = () => {
-		getRoutine(user)
-			.then(res => {
-				res = Object.values(res.data.routine)
-				setUserRoutines(res)
-			})
-	}
-
 	//*********** useEffect for API DB calls, getUserPoses() breaks if user not logged in **********/
 	useEffect(() => {
 		addPoses()
-		if (user !== null) {
-			getUserPoses()
-		}
 	}, [user])
 
-	
+
 	return (
 		<Fragment>
 			<Header user={user} />
@@ -105,7 +92,7 @@ const App = () => {
 					path='/profile'
 					element={
 						<RequireAuth user={user}>
-							<Profile msgAlert={msgAlert} user={user} userRoutines={userRoutines} />
+							<Profile msgAlert={msgAlert} user={user} />
 						</RequireAuth>
 					}
 				/>
