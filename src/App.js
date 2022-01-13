@@ -97,7 +97,7 @@ const App = () => {
 					}
 				/>
 				<Route
-					path='/startroutine'
+					path='/startroutine/:id'
 					element={
 						<RequireAuth user={user}>
 							<StartRoutine msgAlert={msgAlert} user={user} />

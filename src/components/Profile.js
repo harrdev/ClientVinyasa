@@ -3,26 +3,31 @@ import { deleteRoutine, editRoutine } from '../api/routine'
 import { getRoutine } from '../api/routine'
 import { useEffect, useState } from 'react'
 import CreateRoutine from './CreateRoutine'
-
+import Button from 'react-bootstrap/Button'
 const Profile = (props) => {
     const { user, pose } = props
     const [userRoutines, setUserRoutines] = useState([])
     const [editRoutine, setEditRoutine] = useState([])
     //********************** API call to userRoutines DB for saved routines ***************************/
-	const getUserPoses = () => {
-		getRoutine(user)
-			.then(res => {
-				res = Object.values(res.data.routine)
-				setUserRoutines(res)
-			})
+    const getUserPoses = () => {
+        getRoutine(user)
+            .then(res => {
+                res = Object.values(res.data.routine)
+                setUserRoutines(res)
+            })
             .catch(error => {
                 console.log("error resolving")
             })
-	}
+    }
 
-    useEffect (() => {
+    useEffect(() => {
         getUserPoses()
     }, [])
+
+    //****************** Handler for start routine **************************/
+    const handleStart = () => {
+
+    }
 
     //****************** Handler to delete a saved practice *********************/
     const handleDelete = (r) => {
@@ -38,17 +43,20 @@ const Profile = (props) => {
 
     //******************* Loop to display all saved routines *********************/
     const usersRoutines = userRoutines.map((r, i) => {
+        console.log("routine id: ", r._id)
         return (
             <li key={i}>
                 <div>
-                    <div> 
+                    <div>
                         {r.name}
                         <img className="profilePic" src={r.routine[0].imageUrl}></img>
                         <img className="profilePic" src={r.routine[1].imageUrl}></img>
                         <img className="profilePic" src={r.routine[2].imageUrl}></img>
                     </div>
                     <div>
-                        <button>Start Routine</button>
+                        <Link to={`/startroutine/${r._id}`}>
+                            <Button variant="primary">Start Routine</Button>
+                        </Link>
                         <button onClick={() => handleEdit(r)}>Edit Name</button>
                         <button onClick={() => handleDelete(r)}>Delete</button>
                     </div>
