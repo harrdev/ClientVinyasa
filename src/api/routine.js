@@ -20,3 +20,20 @@ export const addRoutine = (info, user) => {
     })
 }
 
+// ****************** API call to show saved practices ************//
+
+export const getRoutine = (res) => {
+    // console.log('this is the user', user)
+    return axios({
+    method: 'GET',
+    headers: {
+        "Authorization": `Bearer ${res.token}`
+    },
+    url: apiUrl + '/profile'
+    })
+    .then(res => {
+        console.log('getRoutine client API request sent', res.data.routine)
+        return res
+    })
+    .catch((error) => console.log(error))
+}
