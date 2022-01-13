@@ -3,6 +3,7 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
+	fontFamily: '"Syncopate", sans-serif',
     color: 'white',
     textDecoration: 'none'
 }
