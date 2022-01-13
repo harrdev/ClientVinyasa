@@ -26,6 +26,7 @@ const Profile = (props) => {
     useEffect (() => {
         getUserPoses()
     }, [])
+    
     // const preview = () => {
     //     for (let i = 0; i < 9; i++) {
     //         console.log(userRoutines[0].routine[i].imageUrl)
