@@ -38,12 +38,10 @@ const Profile = (props) => {
     //****************** Handler to edit a saved practice name *******************/
     // This is setup to pass the edited data to the CreateRoutine page
     const handleEdit = (r) => {
-        console.log("This is r: ", r.name)
     }
 
     //******************* Loop to display all saved routines *********************/
     const usersRoutines = userRoutines.map((r, i) => {
-        console.log("routine id: ", r._id)
         return (
             <li key={i}>
                 <div>

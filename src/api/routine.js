@@ -40,7 +40,6 @@ export const getRoutine = (res) => {
 
 // ****************** API call to show saved practices ************//
 export const getSelectedRoutine = (res) => {
-    console.log('getRoutine API call hit')
     console.log('this is the request ID', res)
     return axios({
     method: 'GET',
@@ -50,14 +49,12 @@ export const getSelectedRoutine = (res) => {
     url: apiUrl + '/startroutine/:id'
     })
     .then(res => {
-        console.log('getRoutine client API request sent', res.data)
         return res
     })
     .catch((error) => console.log(error))
 }
 //****************** API call to delete a saved routine *****************//
 export const deleteRoutine = (id, user) => {
-    console.log('This is the id of the userRoutine: ', id)
     return axios({
         url: `${apiUrl}/profile/${id}`,
         method: 'DELETE',
