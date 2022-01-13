@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { deleteRoutine } from '../api/routine'
+import { deleteRoutine, editRoutine } from '../api/routine'
 import { getRoutine } from '../api/routine'
 
 const Profile = (props) => {
@@ -12,16 +12,23 @@ const Profile = (props) => {
     //     }
     // }
 
+    //****************** Handler to delete a saved practice *********************/
     const handleDelete = (r) => {
         deleteRoutine(r._id, user)
-            .then(res => {
-                console.log(res)
-                getRoutine(user)
-            })
+            // .then(res => {
+            //     console.log(res)
+            //     getRoutine(user)
+            // })
     }
+
+    //****************** Handler to edit a saved practice name *******************/
+    const handleEdit = (r) => {
+        editRoutine()
+    }
+
     //******************* Loop to display all saved routines *********************/
     const usersRoutines = userRoutines.map((r, i) => {
-        console.log("image??: ", r.routine[0].imageUrl)
+        // console.log("image??: ", r.routine[0].imageUrl)
         return (
             <li key={i}>
                 <div>

@@ -21,7 +21,6 @@ export const addRoutine = (info, user) => {
 }
 
 // ****************** API call to show saved practices ************//
-
 export const getRoutine = (res) => {
     console.log('getRoutine API call hit')
     // console.log('this is the user', user)
@@ -39,6 +38,7 @@ export const getRoutine = (res) => {
     .catch((error) => console.log(error))
 }
 
+//****************** API call to delete a saved routine *****************//
 export const deleteRoutine = (id, user) => {
     console.log('This is the id of the userRoutine: ', id)
     return axios({
@@ -48,4 +48,18 @@ export const deleteRoutine = (id, user) => {
         	Authorization: `Token token=${user.token}`,
         },
     })
+}
+
+//****************** API call to edit a saved routine *****************//
+export const editRoutine = (editedName, user) => {
+	return axios({
+		url: `${apiUrl}/profile`,
+		method: 'PATCH',
+		headers: {
+			Authorization: `Token token=${user.token}`,
+		},
+		data: {
+			editedName
+		},
+	})
 }
