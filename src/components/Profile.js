@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 const Profile = (props) => {
     const { user } = props
     const [userRoutines, setUserRoutines] = useState([])
-    const [dummyArray, setDummyArray] = useState('0')
 
     //********************** API call to userRoutines DB for saved routines ***************************/
 	const getUserPoses = () => {
@@ -15,9 +14,6 @@ const Profile = (props) => {
 				res = Object.values(res.data.routine)
 				setUserRoutines(res)
 			})
-            .then (res=> {
-                stateUpdate()
-            })
             .catch(error => {
                 console.log("error resolving")
             })
@@ -26,7 +22,7 @@ const Profile = (props) => {
     useEffect (() => {
         getUserPoses()
     }, [])
-    
+
     // const preview = () => {
     //     for (let i = 0; i < 9; i++) {
     //         console.log(userRoutines[0].routine[i].imageUrl)
@@ -42,10 +38,6 @@ const Profile = (props) => {
             //     console.log(res)
             //     getRoutine(user)
             // })
-    }
-
-    const stateUpdate = () => {
-        setDummyArray('1')
     }
 
     //****************** Handler to edit a saved practice name *******************/
