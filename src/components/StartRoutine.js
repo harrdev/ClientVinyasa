@@ -21,7 +21,7 @@ const StartRoutine = (props) => {
             .then(res => {
                 console.log("setSelectedRoutine has ran!")
                 getImages()
-                console.log("selectedRoutine is: ", selectedRoutine[2][1].imageUrl)
+                console.log("selectedRoutine is: ", selectedRoutine)
             //     for (let i = 0; i < selectedRoutine[2].length; i++) {
             //         slideImages.push(selectedRoutine[2][i].imageUrl)
             //     }
