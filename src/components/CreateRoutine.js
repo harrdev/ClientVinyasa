@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { addRoutine } from '../api/routine'
+import apiUrl from '../apiConfig'
 
 const CreateRoutine = (props) => {
     const { user } = props
@@ -147,19 +148,14 @@ const CreateRoutine = (props) => {
                 </div>
                 <div className="practicePane">
                     <h2 className="pageTitle">Create your Routine</h2>
-                    <form onSubmit={handleSubmit} className="routineForm">
+                    <form onSubmit={handleSubmit} action="/profile" className="routineForm">
                         <label for="name"></label>
                         <input type="text" id="name" name="name" value={formName} onChange={handleName}></input>
                         <input type="hidden" id="routine" name="routine" value={addPose}></input>
                         {/* <input type="submit" value="Submit"></input> */}
-                        {/* <Link to={'/startroutine'}> */}
                         <input type="submit" value="Submit"></input>
-                        {/* </Link> */}
                     </form>
                     <button onClick={() => clearRoutinePane()}>Clear</button>
-                    {/* <Link to={'/startroutine'}>
-                        <Button variant="primary">Start Routine</Button>
-                    </Link> */}
                     {/* Comment#1 - Drag/Drop context becomes a reusable component that takes a routine as a prop in addition to what it already is getting as props.  If a routine exists it shows that routine, if you're creating a new routine it shows as it does now
                     Comment#2 - when createRoutine calls this new component, the routine is null until otherwise built.  When createRoutine is called on the edit page, it's passed the routine so that it popoulates this drag/drop context*/}
                     <DragDropContext onDragEnd={handleOnDragEnd}>
