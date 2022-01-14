@@ -147,13 +147,13 @@ const CreateRoutine = (props) => {
                     </ul>
                 </div>
                 <div className="practicePane">
-                    <h2 className="pageTitle">Create your Routine</h2>
+                    <h2 className="pageTitle">My Routine</h2>
+					<p>Drag and drop to reorder and remove poses. Enter a name to save your practice.</p>
                     <form onSubmit={handleSubmit} action="/profile" className="routineForm">
                         <label for="name"></label>
                         <input type="text" id="name" name="name" value={formName} onChange={handleName}></input>
                         <input type="hidden" id="routine" name="routine" value={addPose}></input>
-                        {/* <input type="submit" value="Submit"></input> */}
-                        <input type="submit" value="Submit"></input>
+                        <input type="submit" value="Save"></input>
                     </form>
                     <button onClick={() => clearRoutinePane()}>Clear</button>
                     {/* Comment#1 - Drag/Drop context becomes a reusable component that takes a routine as a prop in addition to what it already is getting as props.  If a routine exists it shows that routine, if you're creating a new routine it shows as it does now

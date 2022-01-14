@@ -10,10 +10,9 @@ const PoseDetail = (props) => {
     return (
         <>
             <div>
-                <h2>Pose Detail Page</h2>
-                <h2>Pose Selected: {poseContent.englishName}</h2>
-                <h2>Sanskrit Name: {poseContent.sanskritName}</h2>
-                <p>Benefits: {poseContent.description}</p>
+                <h2>{poseContent.englishName}</h2>
+                <h2>{poseContent.sanskritName}</h2>
+                <p>{poseContent.description}</p>
                 <img className="poseDetail" src={poseContent.imageUrl} alt="Pose"></img>
             </div>
         </>

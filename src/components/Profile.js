@@ -54,7 +54,7 @@ const Profile = (props) => {
                     </div>
                     <div>
                         <Link to={`/startroutine/${r._id}`}>
-                            <Button variant="primary">Start Routine</Button>
+                            <Button variant="primary">Begin Practice</Button>
                         </Link>
                         <button onClick={() => handleEdit(r)}>Edit Name</button>
                         <button onClick={() => handleDelete(r)}>Delete</button>
@@ -67,7 +67,7 @@ const Profile = (props) => {
     return (
         <>
             <div className="userRoutines">
-                <h2>Profile Page</h2>
+                <h2 className="pageTitle" >My Saved Practices</h2>
                 <ul>
                     {usersRoutines}
                 </ul>
