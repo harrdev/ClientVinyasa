@@ -9,32 +9,25 @@ const StartRoutine = (props) => {
     const routineId = useParams()
     const slideRef = createRef()
     const [selectedRoutine, setSelectedRoutine] = useState([])
-    const [name, setName] = useState([])
     let [slides, setSlides] = useState([])
-    let [change, setChange] = useState(false)
-    console.log("routineID is: ", routineId)
-    
-    
+
+
     //******************** useEffect to call database and pull in selected routine from profile page *******************/
     useEffect(() => {
         console.log("Slides are: ", slides)
-        getSelectedRoutine(user, routineId)
+        getSelectedRoutine(user, routineId.id)
             .then(res => {
                 let result = res.data.routine.routine
-                console.log("Get name to pull out: ", res.data.routine)
                 setSelectedRoutine(result)
                 return result
             })
             .then(routine => {
-                let names = []
-                let slideImages = []
+                let slideInfo = []
                 if (routine.length > 0) {
                     for (let i = 0; i < routine.length; i++) {
-                        slideImages.push(routine[i].imageUrl)
-                        names.push(routine[i].englishName)
+                        slideInfo.push(routine[i])
                     }
-                    setSlides(slideImages)
-                    setName(names)
+                    setSlides(slideInfo)
                 }
             })
             .catch(error => {
@@ -42,10 +35,7 @@ const StartRoutine = (props) => {
             })
     }, [])
 
-    // useEffect(() => {
-    //     console.log("2nd useEffect image check: ", slides)
-    // }, [slides])
-
+    // ***************************** Properties for slideshow ***********************//
     const properties = {
         duration: 5000,
         autoplay: true,
@@ -60,13 +50,12 @@ const StartRoutine = (props) => {
         <>
             <div>
                 <div className="App">
-                    <h3>Slide Effect</h3>
                     <div className="slide-container">
                         <Slide ref={slideRef} {...properties}>
-                            {slides.map((each, index) => (
+                            {slides.map((e, index) => (
                                 <div key={index} className="each-slide">
-                                    <h2>{name}</h2>
-                                    <img className="lazy" src={each} alt="pose" />
+                                    <h2>{e.englishName}</h2>
+                                    <img className="lazy" src={e.imageUrl} alt="pose" />
                                 </div>
                             ))}
                         </Slide>
