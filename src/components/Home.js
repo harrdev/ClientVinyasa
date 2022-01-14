@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Nav from 'react-bootstrap/Nav'
+import Button from 'react-bootstrap/Button'
 
 const Home = (props) => {
 	// const { msgAlert, user } = props
@@ -8,18 +9,20 @@ const Home = (props) => {
 	const unauthenticatedOptions = (
 		<>
 			<Nav.Link>
-				<Link to='sign-up'>Sign Up</Link>
+				<Link to='sign-in'><Button variant="primary">Login</Button></Link>
 			</Nav.Link>
 			<Nav.Link>
-				<Link to='sign-in'>Sign In</Link>
+				<Link to='sign-up'><Button variant="primary">Sign Up</Button></Link>
 			</Nav.Link>
 		</>
 	)
 
 	return (
 		<>
-			<h2>Home Page</h2>
-			{unauthenticatedOptions}
+			<div className="loginAndSignup">
+				{unauthenticatedOptions}
+
+			</div>
 		</>
 	)
 }
