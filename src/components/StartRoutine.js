@@ -12,16 +12,16 @@ const StartRoutine = (props) => {
     const [name, setName] = useState([])
     let [slides, setSlides] = useState([])
     let [change, setChange] = useState(false)
-    console.log("routineID is: ", routineId)
+    //console.log("routineID is: ", routineId.id)
     
     
     //******************** useEffect to call database and pull in selected routine from profile page *******************/
     useEffect(() => {
         console.log("Slides are: ", slides)
-        getSelectedRoutine(user, routineId)
+        getSelectedRoutine(user, routineId.id)
             .then(res => {
                 let result = res.data.routine.routine
-                console.log("Get name to pull out: ", res.data.routine)
+                //console.log("Get name to pull out: ", res.data.routine)
                 setSelectedRoutine(result)
                 return result
             })
