@@ -22,6 +22,11 @@
   text-align: center;
 }
 
+.navbar-text {
+  margin: auto 15px;
+  padding-left: 20px;
+}
+
 #navbar {
   background-color:rgb(25, 42, 25);
 }
@@ -48,14 +53,6 @@
   background-color: rgb(25, 42, 25);
   border: 5px solid black;
 }
-
-/* .routinePage {
-} */
-
-/* .buildPractice {
-  position: absolute;
-  top: 100px;
-} */
 
 .practiceCard {
   height: 150px;
@@ -97,8 +94,13 @@
 }
 
 .button {
-  background-color: ;
+  variant: dark;
 } 
+
+.buttonHome{
+  padding: 10px;
+  margin: 15px;
+}
 
 .addedCards {
   width: 70px;
@@ -108,12 +110,6 @@
 .cards {
   margin: 10px 0px 10px 0px;
 }
-
-/* .pageTitle {
-  text-align: center;
-} */
-
-
 
 .difficulty {
   display: block;
