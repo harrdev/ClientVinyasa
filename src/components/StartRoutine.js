@@ -9,28 +9,42 @@ const StartRoutine = (props) => {
     const routineId = useParams()
     const slideRef = createRef()
     const [selectedRoutine, setSelectedRoutine] = useState([])
-    const [slides, setSlides] = useState([])
+    const [name, setName] = useState([])
+    let [slides, setSlides] = useState([])
+    let [change, setChange] = useState(false)
+    console.log("routineID is: ", routineId)
+    
+    
     //******************** useEffect to call database and pull in selected routine from profile page *******************/
     useEffect(() => {
+        console.log("Slides are: ", slides)
         getSelectedRoutine(user, routineId)
             .then(res => {
                 let result = res.data.routine.routine
+                console.log("Get name to pull out: ", res.data.routine)
                 setSelectedRoutine(result)
                 return result
             })
             .then(routine => {
+                let names = []
                 let slideImages = []
                 if (routine.length > 0) {
                     for (let i = 0; i < routine.length; i++) {
                         slideImages.push(routine[i].imageUrl)
+                        names.push(routine[i].englishName)
                     }
                     setSlides(slideImages)
+                    setName(names)
                 }
             })
             .catch(error => {
                 console.log("error resolve", error)
             })
     }, [])
+
+    // useEffect(() => {
+    //     console.log("2nd useEffect image check: ", slides)
+    // }, [slides])
 
     const properties = {
         duration: 5000,
@@ -46,13 +60,13 @@ const StartRoutine = (props) => {
         <>
             <div>
                 <div className="App">
-                    <button>Start</button>
                     <h3>Slide Effect</h3>
                     <div className="slide-container">
                         <Slide ref={slideRef} {...properties}>
                             {slides.map((each, index) => (
                                 <div key={index} className="each-slide">
-                                    <img className="lazy" src={each} alt="sample" />
+                                    <h2>{name}</h2>
+                                    <img className="lazy" src={each} alt="pose" />
                                 </div>
                             ))}
                         </Slide>

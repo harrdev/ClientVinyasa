@@ -39,14 +39,20 @@ export const getRoutine = (res) => {
 }
 
 // ****************** API call to show saved practices ************//
-export const getSelectedRoutine = (res) => {
+export const getSelectedRoutine = (res, routineId) => {
     console.log('this is the request ID', res)
+    console.log("RoutineID working?: ", routineId)
     return axios({
     method: 'GET',
     headers: {
         "Authorization": `Bearer ${res.token}`
     },
-    url: apiUrl + '/startroutine/:id'
+    url: apiUrl + '/startroutine/:id',
+    data: {
+        info: {
+            _id: routineId
+        }
+    }
     })
     .then(res => {
         return res
