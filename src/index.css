@@ -1,16 +1,16 @@
-body {
-  margin: 0;
+/* body {
+  margin: 0; */
   /* font-family: 'Architects Daughter', cursive; */
   /* font-family: 'Merienda', cursive; */
-  font-family: 'Syncopate', sans-serif;
+  /* font-family: 'Syncopate', sans-serif; */
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
-}
+/* } */
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+    monospace; */
+/* } */
 #root {
   font-family: 'Syncopate', sans-serif;
   background-color: rgb(185, 220, 207);
@@ -19,6 +19,7 @@ code {
   margin: 0;
   z-index: 1;
   min-height: 100vh;
+  text-align: center;
 }
 
 #navbar {
@@ -68,6 +69,11 @@ code {
   left: 75%;
   text-align: center;
   margin: 10px;
+}
+
+.pageTitle {
+  padding: 15px;
+  font-weight: 550;
 }
 
 .practice {
