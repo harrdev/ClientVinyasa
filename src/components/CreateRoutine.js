@@ -73,9 +73,9 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button className='button' variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
-                                <Button variant="primary">Show Details</Button>
+                                <Button className='button' variant="primary">Show Details</Button>
                             </Link>
                         </Card.Body>
                     </Card>
@@ -95,9 +95,9 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button className='button' variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
-                                <Button variant="primary">Show Details</Button>
+                                <Button className='button' variant="primary">Show Details</Button>
                             </Link>
                         </Card.Body>
                     </Card>
@@ -117,9 +117,9 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button className='button' variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
-                                <Button variant="primary">Show Details</Button>
+                                <Button className='button' variant="primary">Show Details</Button>
                             </Link>
                         </Card.Body>
                     </Card>
@@ -134,7 +134,8 @@ const CreateRoutine = (props) => {
                 <div className="asanaCards">
                     <h2 className="pageTitle">Build Your Practice</h2>
                     <div className="difficulty">
-                        <DropdownButton id="dropdown-item-button" title={difficulty} onSelect={handleChange}>
+						<label htmlFor="dropdown-item-buttom">Select Difficulty</label>
+                        <DropdownButton id="dropdown-item-button" className='button' title={difficulty} onSelect={handleChange}>
                             <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>
                             <Dropdown.Item eventKey='intermediate'>Intermediate</Dropdown.Item>
                             <Dropdown.Item eventKey='advanced'>Advanced</Dropdown.Item>
@@ -153,9 +154,9 @@ const CreateRoutine = (props) => {
                         <label for="name"></label>
                         <input type="text" id="name" name="name" value={formName} onChange={handleName}></input>
                         <input type="hidden" id="routine" name="routine" value={addPose}></input>
-                        <input type="submit" value="Save"></input>
+                        <input type="submit" className='button' value="Save"></input>
                     </form>
-                    <button onClick={() => clearRoutinePane()}>Clear</button>
+                    <button className='button' onClick={() => clearRoutinePane()}>Clear</button>
                     {/* Comment#1 - Drag/Drop context becomes a reusable component that takes a routine as a prop in addition to what it already is getting as props.  If a routine exists it shows that routine, if you're creating a new routine it shows as it does now
                     Comment#2 - when createRoutine calls this new component, the routine is null until otherwise built.  When createRoutine is called on the edit page, it's passed the routine so that it popoulates this drag/drop context*/}
                     <DragDropContext onDragEnd={handleOnDragEnd}>

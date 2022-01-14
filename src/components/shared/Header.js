@@ -58,7 +58,7 @@ const unauthenticatedOptions = (
 const Header = ({ user }) => (
 	<Navbar id='navbar' bg='forest' variant='dark' expand='md'>
 		<Navbar.Brand>
-            <Link to='/' style={linkStyle}>
+            <Link to='/' style={linkStyle} className='appName'>
                 Vinyasa Builder
             </Link>
         </Navbar.Brand>
