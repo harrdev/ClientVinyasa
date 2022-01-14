@@ -64,7 +64,7 @@ const CreateRoutine = (props) => {
             while (p.difficulty === 'beginner') {
                 return (
                     <Card className="cards" style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={p.imageUrl} alt={p.englishName} />
+                        <Card.Img variant="top" className="cardImages" src={p.imageUrl} alt={p.englishName} />
                         <Card.Body>
                             <Card.Title>{p.englishName}</Card.Title>
                             <Card.Text>
@@ -86,7 +86,7 @@ const CreateRoutine = (props) => {
             while (p.difficulty === 'intermediate' || p.difficulty === 'beginner') {
                 return (
                     <Card className="cards" style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={p.imageUrl} alt={p.englishName} />
+                        <Card.Img variant="top" className="cardImages" src={p.imageUrl} alt={p.englishName} />
                         <Card.Body>
                             <Card.Title>{p.englishName}</Card.Title>
                             <Card.Text>
@@ -108,7 +108,7 @@ const CreateRoutine = (props) => {
             return (
                 <div>
                     <Card className="cards" style={{ width: '18rem' }}>
-                        <Card.Img variant="top" className="cards" src={p.imageUrl} alt={p.englishName} />
+                        <Card.Img variant="top" className="cardImages" src={p.imageUrl} alt={p.englishName} />
                         <Card.Body>
                             <Card.Title>{p.englishName}</Card.Title>
                             <Card.Text>

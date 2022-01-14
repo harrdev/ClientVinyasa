@@ -3,17 +3,29 @@ body {
   /* font-family: 'Architects Daughter', cursive; */
   /* font-family: 'Merienda', cursive; */
   font-family: 'Syncopate', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+#root {
+  font-family: 'Syncopate', sans-serif;
+  background-color: rgb(185, 220, 207);
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+#navbar {
+  background-color:rgb(25, 42, 25);
+}
 
 .asanaCards {
-  font-family: 'Syncopate', sans-serif;
   width: 75%;
   display: inline-block;
   margin: 10px 0px 10px 0px;
@@ -22,37 +34,40 @@ code {
 .card-body {
   background-color: rgb(25, 42, 25);
   color: whitesmoke;
+  text-align: center;
 }
 
-.card-image-top.cards {
+.cardImages {
   background-color: rgb(25, 42, 25);
-  roundedCircle: true;
+  border: 5px solid black;
 }
 
-.routinePage {
-  background-color: rgb(177, 223, 205);
-}
+/* .routinePage {
+} */
 
-.buildPractice {
+/* .buildPractice {
   position: absolute;
   top: 100px;
-}
+} */
 
 .practiceCard {
-  height: 200px;
+  height: 150px;
   width: 300px;
-  background-color: purple;
-  margin: 10px 0px 10px 0px;
+  background-color: rgb(25, 42, 25);
+  margin: 10px;
+  color: whitesmoke;
+  border: 2px solid black;
+  border-radius: 5px;
 }
 
 .practicePane {
   border: 5px solid black;
   border-radius: 10px;
   position: absolute;
-  top: 60px;
+  top: 80px;
   left: 75%;
   text-align: center;
-  margin: 0 auto;
+  margin: 10px;
 }
 
 .practice {
@@ -66,6 +81,7 @@ code {
 
 #dropdown-basic-button {
   margin-bottom: 50px;
+  align-items: center;
 }
 
 .addedCards {
