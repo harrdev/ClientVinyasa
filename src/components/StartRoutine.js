@@ -9,47 +9,32 @@ const StartRoutine = (props) => {
     const routineId = useParams()
     const slideRef = createRef()
     const [selectedRoutine, setSelectedRoutine] = useState([])
-    let slideImages = []
+    const [slides, setSlides] = useState([])
     //******************** useEffect to call database and pull in selected routine from profile page *******************/
     useEffect(() => {
         getSelectedRoutine(user, routineId)
             .then(res => {
-                console.log("Res from API call: ", res)
-                res = Object.values(res.data.routine)
-                setSelectedRoutine(res)
+                let result = res.data.routine.routine
+                setSelectedRoutine(result)
+                return result
             })
-            .then(res => {
-                console.log("setSelectedRoutine has ran!")
-                getImages()
-                console.log("selectedRoutine is: ", selectedRoutine[2][1].imageUrl)
-            //     for (let i = 0; i < selectedRoutine[2].length; i++) {
-            //         slideImages.push(selectedRoutine[2][i].imageUrl)
-            //     }
+            .then(routine => {
+                let slideImages = []
+                if (routine.length > 0) {
+                    for (let i = 0; i < routine.length; i++) {
+                        slideImages.push(routine[i].imageUrl)
+                    }
+                    setSlides(slideImages)
+                }
             })
             .catch(error => {
-                console.log("error resolving", error)
+                console.log("error resolve", error)
             })
     }, [])
 
-    console.log("Slide images: ", slideImages)
-    // let timeleft = 10
-    // let slideshowTimer = setInterval(function () {
-    //     if (timeleft <= 0) {
-    //         clearInterval(slideshowTimer)
-    //     }
-    //     document.getElementById("routineTimer").value = 10 - timeleft
-    //     timeleft -= 1
-    // }, 1000)
-
-    const getImages = () => {
-        for (let i = 0; i < selectedRoutine[2].length; i++) {
-            slideImages.push(selectedRoutine[2][i].imageUrl)
-        }
-    }
-
     const properties = {
         duration: 5000,
-        autoplay: false,
+        autoplay: true,
         transitionDuration: 500,
         arrows: false,
         infinite: true,
@@ -61,10 +46,11 @@ const StartRoutine = (props) => {
         <>
             <div>
                 <div className="App">
+                    <button>Start</button>
                     <h3>Slide Effect</h3>
                     <div className="slide-container">
                         <Slide ref={slideRef} {...properties}>
-                            {slideImages.map((each, index) => (
+                            {slides.map((each, index) => (
                                 <div key={index} className="each-slide">
                                     <img className="lazy" src={each} alt="sample" />
                                 </div>

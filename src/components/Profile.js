@@ -4,6 +4,7 @@ import { getRoutine } from '../api/routine'
 import { useEffect, useState } from 'react'
 import CreateRoutine from './CreateRoutine'
 import Button from 'react-bootstrap/Button'
+
 const Profile = (props) => {
     const { user, pose } = props
     const [userRoutines, setUserRoutines] = useState([])
