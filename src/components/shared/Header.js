@@ -1,22 +1,19 @@
+import { getByPlaceholderText } from '@testing-library/react'
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link } from 'react-router-dom'
 const linkStyle = {
 	fontFamily: '"Syncopate", sans-serif',
+	fontWeight: '600',
     color: 'white',
-    textDecoration: 'none'
+    textDecoration: 'none',
 }
 const authenticatedOptions = (
 	<>
 		<Nav.Link>
 			<Link to='./profile' style={linkStyle}>
 				Profile
-			</Link>
-		</Nav.Link>
-		<Nav.Link>
-			<Link to='./startroutine' style={linkStyle}>
-				Start Routine
 			</Link>
 		</Nav.Link>
 		<Nav.Link>

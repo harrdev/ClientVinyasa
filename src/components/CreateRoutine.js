@@ -63,7 +63,7 @@ const CreateRoutine = (props) => {
         if (difficulty === 'beginner') {
             while (p.difficulty === 'beginner') {
                 return (
-                    <Card style={{ width: '18rem' }}>
+                    <Card className="cards" style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={p.imageUrl} alt={p.englishName} />
                         <Card.Body>
                             <Card.Title>{p.englishName}</Card.Title>
@@ -85,7 +85,7 @@ const CreateRoutine = (props) => {
         else if (difficulty === 'intermediate') {
             while (p.difficulty === 'intermediate' || p.difficulty === 'beginner') {
                 return (
-                    <Card style={{ width: '18rem' }}>
+                    <Card className="cards" style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={p.imageUrl} alt={p.englishName} />
                         <Card.Body>
                             <Card.Title>{p.englishName}</Card.Title>
@@ -132,7 +132,7 @@ const CreateRoutine = (props) => {
         <>
             <div className="routinePage">
                 <div className="asanaCards">
-                    <h2 className="pageTitle">Selected Difficulty Poses</h2>
+                    <h2 className="pageTitle">Build Your Practice</h2>
                     <div className="difficulty">
                         <DropdownButton id="dropdown-item-button" title={difficulty} onSelect={handleChange}>
                             <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>

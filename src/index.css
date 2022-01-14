@@ -1,8 +1,8 @@
 body {
   margin: 0;
-  font-family: 'Architects Daughter', cursive;
-  font-family: 'Merienda', cursive;
-  /* font-family: 'Syncopate', sans-serif; */
+  /* font-family: 'Architects Daughter', cursive; */
+  /* font-family: 'Merienda', cursive; */
+  font-family: 'Syncopate', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,20 +15,22 @@ code {
 .asanaCards {
   font-family: 'Syncopate', sans-serif;
   width: 75%;
-  background-color: yellow;
   display: inline-block;
   margin: 10px 0px 10px 0px;
 }
 
-.buildRoutine {
-  width: 25%;
-  background-color: red;
-  display: inline-block;
+.card-body {
+  background-color: rgb(25, 42, 25);
+  color: whitesmoke;
 }
 
-.addedPoses {
-  background-color: blueviolet;
-  border: 10px solid black;
+.card-image-top.cards {
+  background-color: rgb(25, 42, 25);
+  roundedCircle: true;
+}
+
+.routinePage {
+  background-color: rgb(177, 223, 205);
 }
 
 .buildPractice {
@@ -44,6 +46,8 @@ code {
 }
 
 .practicePane {
+  border: 5px solid black;
+  border-radius: 10px;
   position: absolute;
   top: 60px;
   left: 75%;
