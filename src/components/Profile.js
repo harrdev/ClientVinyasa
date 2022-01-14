@@ -56,8 +56,8 @@ const Profile = (props) => {
                         <Link to={`/startroutine/${r._id}`}>
                             <Button variant="primary">Begin Practice</Button>
                         </Link>
-                        <button onClick={() => handleEdit(r)}>Edit Name</button>
-                        <button onClick={() => handleDelete(r)}>Delete</button>
+                        <button className='button' onClick={() => handleEdit(r)}>Edit Name</button>
+                        <button className='button' onClick={() => handleDelete(r)}>Delete</button>
                     </div>
                 </div>
             </li>

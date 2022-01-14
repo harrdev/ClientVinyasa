@@ -58,6 +58,8 @@ const CreateRoutine = (props) => {
         setFormName(e.target.value)
     }
 
+	
+
     //*************** Loop to iterate through selected difficulty and display ******************/
     const allPoses = props.pose.map((p, i) => {
         if (difficulty === 'beginner') {
@@ -164,6 +166,7 @@ const CreateRoutine = (props) => {
                                     {addPose.map(({ englishName, sanskritName, imageUrl }, index) => {
                                         return (
                                             <Draggable key={englishName} draggableId={englishName} index={index}>
+											{/* <Draggable key={englishName} draggableId={englishName} index={index}> */}
                                                 {(provided) => (
                                                     <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                         <div className="practiceCard">

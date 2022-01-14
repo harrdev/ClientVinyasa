@@ -28,7 +28,7 @@
 
 .asanaCards {
   width: 75%;
-  display: inline-block;
+  display: block;
   margin: 10px 0px 10px 0px;
 }
 
@@ -71,11 +71,10 @@
   border: 5px solid black;
   border-radius: 10px;
   position: absolute;
-  top: 80px;
+  top: 100px;
   left: 75%;
-  text-align: center;
   margin: 10px;
-  width: 25%;
+  display: inline-block;
 }
 
 .pageTitle {
@@ -96,6 +95,10 @@
   margin-bottom: 50px;
   align-items: center;
 }
+
+.button {
+  background-color: ;
+} 
 
 .addedCards {
   width: 70px;
@@ -120,4 +123,12 @@
 .profilePic {
   height: 75px;
   width: 75px;
+}
+
+.loginAndSignup {
+    background-image: url(images/yogasunset.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
 }
