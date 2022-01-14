@@ -28,8 +28,14 @@
 
 .asanaCards {
   width: 75%;
-  display: inline-block;
+  display: block;
   margin: 10px 0px 10px 0px;
+}
+
+.flex-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .card-body {
@@ -65,10 +71,10 @@
   border: 5px solid black;
   border-radius: 10px;
   position: absolute;
-  top: 80px;
+  top: 100px;
   left: 75%;
-  text-align: center;
   margin: 10px;
+  display: inline-block;
 }
 
 .pageTitle {
@@ -90,6 +96,10 @@
   align-items: center;
 }
 
+.button {
+  background-color: ;
+} 
+
 .addedCards {
   width: 70px;
   height: 70px;
@@ -99,15 +109,11 @@
   margin: 10px 0px 10px 0px;
 }
 
-.pageTitle {
+/* .pageTitle {
   text-align: center;
-}
+} */
 
-.flex-container {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+
 
 .difficulty {
   display: block;
@@ -117,4 +123,12 @@
 .profilePic {
   height: 75px;
   width: 75px;
+}
+
+.loginAndSignup {
+    background-image: url(images/yogasunset.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
 }

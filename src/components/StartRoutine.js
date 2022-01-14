@@ -55,7 +55,7 @@ const StartRoutine = (props) => {
                             {slides.map((e, index) => (
                                 <div key={index} className="each-slide">
                                     <h2>{e.englishName}</h2>
-                                    <img className="lazy" src={e.imageUrl} alt="pose" />
+                                    <img className="images" src={e.imageUrl} alt={e.englishName} />
                                 </div>
                             ))}
                         </Slide>

@@ -58,6 +58,8 @@ const CreateRoutine = (props) => {
         setFormName(e.target.value)
     }
 
+	
+
     //*************** Loop to iterate through selected difficulty and display ******************/
     const allPoses = props.pose.map((p, i) => {
         if (difficulty === 'beginner') {
@@ -73,9 +75,9 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button className='button' variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
-                                <Button variant="primary">Show Details</Button>
+                                <Button className='button' variant="primary">Show Details</Button>
                             </Link>
                         </Card.Body>
                     </Card>
@@ -95,9 +97,9 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button className='button' variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
-                                <Button variant="primary">Show Details</Button>
+                                <Button className='button' variant="primary">Show Details</Button>
                             </Link>
                         </Card.Body>
                     </Card>
@@ -117,9 +119,9 @@ const CreateRoutine = (props) => {
                             <Card.Text>
                                 Difficulty: {p.difficulty}
                             </Card.Text>
-                            <Button variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
+                            <Button className='button' variant="success" onClick={() => addNewPose(p)}>Add to Routine</Button>
                             <Link to={`/posedetail/${p._id}`}>
-                                <Button variant="primary">Show Details</Button>
+                                <Button className='button' variant="primary">Show Details</Button>
                             </Link>
                         </Card.Body>
                     </Card>
@@ -134,7 +136,8 @@ const CreateRoutine = (props) => {
                 <div className="asanaCards">
                     <h2 className="pageTitle">Build Your Practice</h2>
                     <div className="difficulty">
-                        <DropdownButton id="dropdown-item-button" title={difficulty} onSelect={handleChange}>
+						<label htmlFor="dropdown-item-buttom">Select Difficulty</label>
+                        <DropdownButton id="dropdown-item-button" className='button' title={difficulty} onSelect={handleChange}>
                             <Dropdown.Item eventKey='beginner'>Beginner</Dropdown.Item>
                             <Dropdown.Item eventKey='intermediate'>Intermediate</Dropdown.Item>
                             <Dropdown.Item eventKey='advanced'>Advanced</Dropdown.Item>
@@ -153,9 +156,9 @@ const CreateRoutine = (props) => {
                         <label for="name"></label>
                         <input type="text" id="name" name="name" value={formName} onChange={handleName}></input>
                         <input type="hidden" id="routine" name="routine" value={addPose}></input>
-                        <input type="submit" value="Save"></input>
+                        <input type="submit" className='button' value="Save"></input>
                     </form>
-                    <button onClick={() => clearRoutinePane()}>Clear</button>
+                    <button className='button' onClick={() => clearRoutinePane()}>Clear</button>
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         <Droppable droppableId="addToPractice">
                             {(provided) => (
@@ -163,6 +166,7 @@ const CreateRoutine = (props) => {
                                     {addPose.map(({ englishName, sanskritName, imageUrl }, index) => {
                                         return (
                                             <Draggable key={englishName} draggableId={englishName} index={index}>
+											{/* <Draggable key={englishName} draggableId={englishName} index={index}> */}
                                                 {(provided) => (
                                                     <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                                                         <div className="practiceCard">
