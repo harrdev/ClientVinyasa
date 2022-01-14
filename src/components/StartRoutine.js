@@ -43,19 +43,19 @@ const StartRoutine = (props) => {
         arrows: false,
         infinite: true,
         easing: "ease",
-        indicators: (i) => <div className="indicator">{i + 1}</div>
+        //indicators: (i) => <div className="indicator">{i + 1}</div>
     }
 
     return (
         <>
-            <div>
-                <div className="App">
-                    <div className="slide-container">
+            <div className="startRoutine">
+                <div className="mainRoutine">
+                    <div className="slideContainer">
                         <Slide ref={slideRef} {...properties}>
                             {slides.map((e, index) => (
-                                <div key={index} className="each-slide">
-                                    <h2>{e.englishName}</h2>
-                                    <img className="images" src={e.imageUrl} alt={e.englishName} />
+                                <div key={index} className="eachSlide">
+                                    <h2 className="slideName">{e.englishName}</h2>
+                                    <img className="slideImage" src={e.imageUrl} alt={e.englishName} />
                                 </div>
                             ))}
                         </Slide>

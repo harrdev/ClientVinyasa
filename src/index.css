@@ -1,9 +1,9 @@
 /* body {
   margin: 0; */
-  /* font-family: 'Architects Daughter', cursive; */
-  /* font-family: 'Merienda', cursive; */
-  /* font-family: 'Syncopate', sans-serif; */
-  /* -webkit-font-smoothing: antialiased;
+/* font-family: 'Architects Daughter', cursive; */
+/* font-family: 'Merienda', cursive; */
+/* font-family: 'Syncopate', sans-serif; */
+/* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
 /* } */
 
@@ -23,7 +23,7 @@
 }
 
 #navbar {
-  background-color:rgb(25, 42, 25);
+  background-color: rgb(25, 42, 25);
 }
 
 .asanaCards {
@@ -98,7 +98,7 @@
 
 .button {
   background-color: ;
-} 
+}
 
 .addedCards {
   width: 70px;
@@ -126,9 +126,22 @@
 }
 
 .loginAndSignup {
-    background-image: url(images/yogasunset.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    height: 100vh;
+  background-image: url(images/yogasunset.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+}
+
+.startRoutine {
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+  background-color: rgb(18, 14, 14);
+  background-size: 100vh;
+}
+
+.slideContainer {
+  background-color: rgb(18, 14, 14);
+  margin-top: 15%;
 }
