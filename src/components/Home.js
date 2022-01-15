@@ -9,10 +9,10 @@ const Home = (props) => {
 	const unauthenticatedOptions = (
 		<>
 			<Nav.Link>
-				<Link to='sign-in'><Button className='button' variant="primary">Login</Button></Link>
+				<Link to='sign-up'><Button className='buttonHome' variant='dark' >Sign Up</Button></Link>
 			</Nav.Link>
 			<Nav.Link>
-				<Link to='sign-up'><Button className='button' variant="primary">Sign Up</Button></Link>
+				<Link to='sign-in'><Button className='buttonHome' variant='dark' >Log In</Button></Link>
 			</Nav.Link>
 		</>
 	)
